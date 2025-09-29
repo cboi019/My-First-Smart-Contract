@@ -3,7 +3,7 @@ Person.sol 👤
 My first Solidity smart contract! 🚀
 This simple contract stores and manages a person’s data on the blockchain.
 
-🔹 Features
+- Features
 
 Store a person’s name and age at deployment (via constructor).
 
@@ -13,7 +13,7 @@ Retrieve both name and age.
 
 Includes a pure function that does simple math (5 * 5).
 
-🔹 Contract Code
+- Contract Code
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
