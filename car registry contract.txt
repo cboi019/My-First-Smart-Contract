@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract carRegistry {
+
+    string public owner;
+
+    struct Car {
+        string Brand;
+        string Model;
+        uint256 Year;
+        uint256 ID;
+    }
+
+    Car[] private cars;
+    mapping (uint256 => string) getbrandfromID;
+
+    constructor(string memory _owner) {
+        owner = _owner;
+    }
+
+    function addCar(string memory _brand, string memory _model, uint256 _year, uint256 _id) public  {
+        cars.push(Car(_brand, _model, _year, _id));
+        getbrandfromID[_id] = _brand;
+    }
+
+    function getCar(uint256 _index) public view returns(string memory, string memory, uint256, uint256){
+        Car memory getDetails = cars[_index];
+        return (getDetails.Brand, getDetails.Model, getDetails.Year, getDetails.ID);
+    }
+
+    function updateCar(uint256 _index, string memory _newBrand, string memory _newModel, uint256 _newYear) public {
+        cars[_index].Brand = _newBrand;
+        cars[_index].Model = _newModel;
+        cars[_index].Year = _newYear;
+
+        getbrandfromID[cars[_index].ID] = _newBrand;
+    }
+}
